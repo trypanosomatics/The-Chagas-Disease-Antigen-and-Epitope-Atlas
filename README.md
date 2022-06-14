@@ -5,11 +5,11 @@ This repository contains code that demonstrates the processing and analysis of p
 
 * The files included in this repository
 * Raw data files from CHAGASTOPE-v1 arrays (such as *AR_PO_raw.tsv*) downloaded from Array Express [here](https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-11651/)
-* The raw data files from CHAGASTOPE-v2 arrays (such as *AR_E1_PO_raw.tsv*) downloaded from Array Express [here](https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-11655/)
-* The design file for CHAGASTOPE-v1 arrays (*Supplementary Table S09 - Mapping of CHAGASTOPE-v1 data to T cruzi proteins.tsv*), also available from Array Express [here](https://www.ebi.ac.uk/arrayexpress/arrays/A-MTAB-692/)
-* The design file for CHAGASTOPE-v2 arrays (*Supplementary Table S10 - Mapping of CHAGASTOPE-v2 data to T cruzi proteins.tsv*), also available from Array Express [here](https://www.ebi.ac.uk/arrayexpress/arrays/A-MTAB-693/)
+* Raw data files from CHAGASTOPE-v2 arrays (such as *AR_E1_PO_raw.tsv*) downloaded from Array Express [here](https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-11655/)
+* The design file for CHAGASTOPE-v1 arrays (*Supplementary Table S09 - Mapping of CHAGASTOPE-v1 data to T cruzi proteins.tsv*), available in our paper
+* The design file for CHAGASTOPE-v2 arrays (*Supplementary Table S10 - Mapping of CHAGASTOPE-v2 data to T cruzi proteins.tsv*), available in our paper
 
-Once you have these you may want to follow the instructions in each of the R code files in ascending order. In R you will need the following packages: **data.table**, 
+Once you have these, you should follow the instructions in each of the R code files in ascending order. In R you will need the following packages: **data.table**, 
 **preprocessCore** and **zoo**. 
 
 Keep in mind that if you are just interested in the outputs and not in the process, you can find the corresponding Normalized Data in the same Array Express links, and the Smoothed Data and Region Data as Supplementary Tables and Files in our paper.
