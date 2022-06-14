@@ -14,4 +14,4 @@ Once you have all this you want to follow the instructions in each of the R code
 
 Keep in mind that if you are just interested in the outputs and not in the process, you can find the corresponding Normalized Data in the same Array Express links, and the Smoothed Data and Region Data as Supplementary Tables and Files in our paper.
 
-Prefixes in the files and folders in this repository are there simply to indicate grouping and order. There are some missing numbers which doesn't mean anything.
+Prefixes in the files and folders in this repository are there simply to indicate grouping and order.
