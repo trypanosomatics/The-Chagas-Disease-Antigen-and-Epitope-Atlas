@@ -1,7 +1,7 @@
 # The-Chagas-Disease-Antigen-and-Epitope-Atlas
 A Trypanosoma cruzi Antigen and Epitope Atlas: deep characterization of individual antibody specificities in human Chagas Disease patients across the Americas
 
-This code allows you to replicate our main processing and analysis carried out in our paper. You will need the following:
+This code allows you to replicate the processing and analysis carried out in our paper. You will need the following:
 
 * The files included in this repository
 * The raw data files from CHAGASTOPE-v1 (such as *AR_PO_raw.tsv*) downloaded from Array Express [here](https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-11651/)
