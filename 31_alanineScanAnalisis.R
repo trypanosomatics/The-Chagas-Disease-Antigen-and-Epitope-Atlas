@@ -9,8 +9,7 @@
 ## This code uses large amounts of RAM
 
 #### CONFIG ####
-project_folder <- "/FULLDIR/chagastope_data"
-# project_folder <- "/home/leonel/Documents/paperChagastope/SUP_CODE/The-Chagas-Disease-Antigen-and-Epitope-Atlas/example/"
+project_folder <- "./example/"
 library(dplyr)
 library(reshape2)
 
@@ -42,13 +41,13 @@ estimateSignalChanges = function(selected_protein) {
     changeDT = filter(temp_protein,sample == s)
     temp_originals_filtered <- filter(temp_originals, sample == s)
     changeDT <- merge(changeDT,temp_originals_filtered,by = c("peptide_to_scan","sample"))
-    changeDT$change <- changeDT$signal - changeDT$original_signal
+    changeDT$change <- changeDT$signal - changeDT$original_signal #Here we estimate signal change as the difference between signal of mutated peptides and the ones that has the original sequence of the protein.
     
     mutated_aa <- changeDT$alanine_position_start
     mutated_aa[changeDT$alanine_position == 0] <- 0
     mutated_aa <- unique(mutated_aa)
     
-    changeDT$mutated_aa <- substr(changeDT$peptide_to_scan,changeDT$alanine_position,changeDT$alanine_position)
+    changeDT$mutated_aa <- substr(changeDT$peptide_to_scan,changeDT$alanine_position,changeDT$alanine_position) #Here we save the aa that we are mutating.
     changeDT_temp = dplyr::group_by(filter(changeDT,alanine_position != 0),alanine_position_start,sample) %>% dplyr::summarise(change = mean(change),
                                                                                                                                mutated_aa = unique(mutated_aa),
                                                                                                                                protein = unique(protein))
@@ -63,7 +62,7 @@ generateHeatmapMatrix = function(dt){
   temp_matrix <- acast(dt, paste(alanine_position_start,mutated_aa)~sample, value.var = "change",fun.aggregate = mean,na.rm = T)
   temp_matrix <- temp_matrix[order(as.numeric(gsub("[^0-9.]", "",rownames(temp_matrix)))),,drop = F]
   temp_matrix <- t(temp_matrix)
-  temp_matrix <- temp_matrix[samples,]
+  temp_matrix <- temp_matrix[samples,] #this is only for ordering samples by reactivity
   return(temp_matrix)
 }
 
@@ -86,9 +85,36 @@ for (i in 1:length(files)) {
 } #Load all micro-array results for all samples
 
 
-protein_to_estimate <- "TcCLB.511671.60"
+protein_to_estimate <- "TcCLB.511671.60" #Select protein to analize, if this script is run as it is, it will only take this protein.
 dt <- estimateSignalChanges(protein_to_estimate)
 matrix <- generateHeatmapMatrix(dt)
 
-write.table(dt,paste0("./outputs/31_Alanine_scan_raw_data/Raw_data_signal_change_alanine_scan_",protein_to_estimate,".tsv"),sep = "\t")
-write.table(matrix,paste0("./outputs/31_Alanine_scan_raw_data/Raw_data_signal_change_matrix_alanine_scan_",protein_to_estimate,".tsv"),sep = "\t")
+### SAVE RESULTS AS TABLES
+
+write.table(dt,paste0("./outputs/31_Alanine_scan_raw_data/Raw_data_signal_change_alanine_scan_",protein_to_estimate,".tsv"),sep = "\t")  #long format
+write.table(matrix,paste0("./outputs/31_Alanine_scan_raw_data/Raw_data_signal_change_matrix_alanine_scan_",protein_to_estimate,".tsv"),sep = "\t") #matrix for heatmap
+
+make_heatmap = function(temp_matrix,selected_protein,selected_serums = "") {
+  colours_options <- c("red","blue","orange","green","white","pink","darkblue","grey")
+  colours_cb <- data.frame(names = colours_options,cb = c(colorblindr::palette_OkabeIto[c(6,2,1,3)],"white",colorblindr::palette_OkabeIto[c(7,5,8)]))
+  temp_matrix <- temp_matrix[,as.numeric(as.character(lapply(strsplit(colnames(temp_matrix)," "), `[[`, 1))) > 0]
+  paletteLength <- 250
+  myColor <- c(colorRampPalette(c(colours_cb$cb[colours_cb$names == "red"], "white"))(paletteLength/2),colorRampPalette(c("white",colours_cb$cb[colours_cb$names == "blue"]))(paletteLength/2))
+  myBreaks <- c(seq(min(temp_matrix), 0, length.out = ceiling(paletteLength/2) + 1), 
+                seq(max(temp_matrix)/paletteLength, max(temp_matrix), length.out = floor(paletteLength/2)))
+  if (sum(abs(colMeans(temp_matrix)) > 1300) == 0) { 
+    dist <- dist(temp_matrix)} else {
+      dist <- dist(temp_matrix[,abs(colMeans(temp_matrix)) > 1300])
+    }
+  hc = hclust(dist , method = "average")
+  if (selected_serums != "") {
+    heatmap <- pheatmap::pheatmap(temp_matrix,cluster_cols = F,cluster_rows = hc,color = myColor, breaks = myBreaks,border_color = NA,main = selected_protein,
+                                  labels_row = make_bold_names(temp_matrix, rownames, selected_serums))
+    colors_heatmap = ifelse(grepl("bold",heatmap$gtable$grobs[[5]]$label),colours_cb$cb[6],"black")
+    heatmap$gtable$grobs[[5]]$gp = gpar(col = colors_heatmap)
+  } else {
+    heatmap <- pheatmap::pheatmap(temp_matrix,cluster_cols = F,cluster_rows = hc,color = myColor, breaks = myBreaks,border_color = NA,main = selected_protein)
+  }
+  return(heatmap)
+} #Only used for ploting, not needed elsewhere.
+# make_heatmap(temp_matrix = matrix,selected_protein = protein_to_estimate) #OPTIONAL: using "pheatmap" and "colorblindr" package you could visualize results as in the manuscript.
