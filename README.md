@@ -29,5 +29,5 @@ $ Rscript 12_individual_serums_smooth_data.R
 
 Alanine Scan example for **Ag2-antigen | TcCLB.511671.60** can be reproduced as in the example provided here by running in UNIX:
 ```
-$ Rscript 31_alanineScanAnalisis.R
+$ Rscript 21_alanine_scan_analisis.R
 ```
