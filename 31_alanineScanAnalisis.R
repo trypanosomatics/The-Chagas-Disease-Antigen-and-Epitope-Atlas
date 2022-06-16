@@ -65,35 +65,7 @@ generateHeatmapMatrix = function(dt){
   temp_matrix <- temp_matrix[samples,] #this is only for ordering samples by reactivity
   return(temp_matrix)
 }
-
-setwd(project_folder)
-design_alanine <- read.csv("inputs/31_design_alanine_scan/Design_AlanineScan.tsv",sep = "\t")
-
-input_data_path <- "./inputs/32_AlanineScan_raw_data/"
-files <- list.files(input_data_path)
-files <- files[grepl("raw.tsv",files)]
-
-for (i in 1:length(files)) {
-  # i<-1
-  Chips_roche_norm_dat <- read.csv(paste0(input_data_path,files[i],sep = ""),sep = "\t",stringsAsFactors = F)
-  Chips_roche_norm_dat$sample <- paste(strsplit(files[i],"_")[[1]][c(1:2)],collapse = "_")
-  if (i == 1) {
-    Chips_roche_norm <- Chips_roche_norm_dat
-    next()
-  }
-  Chips_roche_norm <- rbind(Chips_roche_norm,Chips_roche_norm_dat)
-} #Load all micro-array results for all samples
-
-
-protein_to_estimate <- "TcCLB.511671.60" #Select protein to analize, if this script is run as it is, it will only take this protein.
-dt <- estimateSignalChanges(protein_to_estimate)
-matrix <- generateHeatmapMatrix(dt)
-
-### SAVE RESULTS AS TABLES
-
-write.table(dt,paste0("./outputs/31_Alanine_scan_raw_data/Raw_data_signal_change_alanine_scan_",protein_to_estimate,".tsv"),sep = "\t")  #long format
-write.table(matrix,paste0("./outputs/31_Alanine_scan_raw_data/Raw_data_signal_change_matrix_alanine_scan_",protein_to_estimate,".tsv"),sep = "\t") #matrix for heatmap
-
+## This functions takes the matrix generated, clusterize samples by similarity and renders a heatmap visualization with the same color scales used in the manuscript. Only used for ploting, not needed elsewhere.
 make_heatmap = function(temp_matrix,selected_protein,selected_serums = "") {
   colours_options <- c("red","blue","orange","green","white","pink","darkblue","grey")
   colours_cb <- data.frame(names = colours_options,cb = c(colorblindr::palette_OkabeIto[c(6,2,1,3)],"white",colorblindr::palette_OkabeIto[c(7,5,8)]))
@@ -116,5 +88,35 @@ make_heatmap = function(temp_matrix,selected_protein,selected_serums = "") {
     heatmap <- pheatmap::pheatmap(temp_matrix,cluster_cols = F,cluster_rows = hc,color = myColor, breaks = myBreaks,border_color = NA,main = selected_protein)
   }
   return(heatmap)
-} #Only used for ploting, not needed elsewhere.
-# make_heatmap(temp_matrix = matrix,selected_protein = protein_to_estimate) #OPTIONAL: using "pheatmap" and "colorblindr" package you could visualize results as in the manuscript.
+} 
+
+setwd(project_folder)
+design_alanine <- read.csv("inputs/31_design_alanine_scan/Design_AlanineScan.tsv",sep = "\t")
+
+input_data_path <- "./inputs/32_AlanineScan_raw_data/"
+files <- list.files(input_data_path)
+files <- files[grepl("raw.tsv",files)]
+
+for (i in 1:length(files)) {
+  # i<-1
+  Chips_roche_norm_dat <- read.csv(paste0(input_data_path,files[i],sep = ""),sep = "\t",stringsAsFactors = F)
+  Chips_roche_norm_dat$sample <- paste(strsplit(files[i],"_")[[1]][c(1:2)],collapse = "_")
+  if (i == 1) {
+    Chips_roche_norm <- Chips_roche_norm_dat
+    next()
+  }
+  Chips_roche_norm <- rbind(Chips_roche_norm,Chips_roche_norm_dat)
+} #Load all micro-array results for all samples
+
+
+protein_to_estimate <- "TcCLB.511671.60" #Select protein to analyze, if this script is run as it is, it will only take this protein.
+dt <- estimateSignalChanges(protein_to_estimate)
+matrix <- generateHeatmapMatrix(dt)
+
+#### SAVE RESULTS ####
+
+write.table(dt,paste0("./outputs/31_Alanine_scan_raw_data/Raw_data_signal_change_alanine_scan_",protein_to_estimate,".tsv"),sep = "\t")  #long format
+write.table(matrix,paste0("./outputs/31_Alanine_scan_raw_data/Raw_data_signal_change_matrix_alanine_scan_",protein_to_estimate,".tsv"),sep = "\t") #matrix for heatmap
+
+# OPTIONAL: using "pheatmap" and "colorblindr" package you could visualize results as in the manuscript.
+# make_heatmap(temp_matrix = matrix,selected_protein = protein_to_estimate) 
