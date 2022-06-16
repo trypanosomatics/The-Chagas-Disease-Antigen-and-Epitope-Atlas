@@ -1,4 +1,5 @@
 # The-Chagas-Disease-Antigen-and-Epitope-Atlas
+![LOGO](https://chagastope.org/images/home/chagastope-logo-letters-only-v3.png)
 A Trypanosoma cruzi Antigen and Epitope Atlas: deep characterization of individual antibody specificities in human Chagas Disease patients across the Americas.
 
 This repository contains code that demonstrates the processing and analysis of peptide microarray data for the Atlas. You will need the following:
