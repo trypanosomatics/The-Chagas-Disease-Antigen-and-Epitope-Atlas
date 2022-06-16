@@ -3,15 +3,16 @@
 
 ## 1. In chagastope_data/inputs/02_pools_raw_data place each of the raw data files from CHAGASTOPE-v1 (such as AR_PO_raw.tsv) downloaded from Array Express (https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-11651/)
 ## 2. Set the "testing" variable in the config below to FALSE, or run this code with the "-test F" argument
+## 3. If you are running this code in Rstudio, set the "main_folder" variable in the config below to the folder containing this code
 
 #### WARNINGS ####
 ## This code uses large amounts of RAM
 
 #### CONFIG ####
-#Change this to FALSE when running the actual data
-testing <- TRUE
+main_folder <- "." #When running in Rstudio, set this to the absolute path of the folder containing this code
+testing <- TRUE #set this to FALSE when running the actual data
 
-#### READ ARGUMENTS AND GET PATH (YOU CAN CHANGE THE PATHS TO THE ABSOLUTE PATHS IF NECESSARY) ####
+#### READ ARGUMENTS AND GET PATH (DO NOT CHANGE) ####
 args <- commandArgs(TRUE)
 
 if (length(args == 2)) {
@@ -22,10 +23,10 @@ if (length(args == 2)) {
 
 if (testing == TRUE) {
     #For testing
-    project_folder <- "./test_data"    
+    project_folder <- sprintf("%s/test_data", main_folder)
 } else {
     #For running the actual data
-    project_folder <- "./chagastope_data"
+    project_folder <- sprintf("%s/chagastope_data", main_folder)
 }
 
 #### INTERNAL CONFIG (DO NOT CHANGE) ####

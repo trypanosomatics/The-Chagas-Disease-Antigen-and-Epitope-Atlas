@@ -4,15 +4,16 @@
 ## 1. In chagastope_data/inputs/11_individual_serums_array_design place the "Supplementary Table S10 - Mapping of CHAGASTOPE-v2 data to T cruzi proteins.tsv" file (links in the paper)
 ## 2. In chagastope_data/inputs/12_individual_serums_raw_data place each of the raw data files from CHAGASTOPE-v2 (such as AR_P1_PO_raw.tsv) downloaded from Array Express (https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-11655/)
 ## 3. Set the "testing" variable in the config below to FALSE, or run this code with the "-test F" argument
+## 4. If you are running this code in Rstudio, set the "main_folder" variable in the config below to the folder containing this code
 
 #### WARNINGS ####
 ## This code uses large amounts of RAM
 
 #### CONFIG ####
-#Change this to FALSE when running the actual data
-testing <- TRUE
+main_folder <- "." #When running in Rstudio, set this to the absolute path of the folder containing this code
+testing <- TRUE #set this to FALSE when running the actual data
 
-#### READ ARGUMENTS AND GET PATH (YOU CAN CHANGE THE PATHS TO THE ABSOLUTE PATHS IF NECESSARY) ####
+#### READ ARGUMENTS AND GET PATH (DO NOT CHANGE) ####
 args <- commandArgs(TRUE)
 
 if (length(args == 2)) {
@@ -23,10 +24,10 @@ if (length(args == 2)) {
 
 if (testing == TRUE) {
     #For testing
-    project_folder <- "./test_data"    
+    project_folder <- sprintf("%s/test_data", main_folder)
 } else {
     #For running the actual data
-    project_folder <- "./chagastope_data"
+    project_folder <- sprintf("%s/chagastope_data", main_folder)
 }
 
 #### INTERNAL CONFIG (DO NOT CHANGE) ####
