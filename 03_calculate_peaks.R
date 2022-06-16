@@ -1,9 +1,31 @@
 #### PREPARATION STEPS ####
+## You can run this code as it is to process a small subset of proteins, or you can follow these next steps to analyze the entire dataset.
+
 ## 1. Make sure you have run all previous codes
-## 2. Change the path in the config below so it points to chagastope_data folder
+## 2. Set the "testing" variable in the config below to FALSE, or run this code with the "-test F" argument
 
 #### CONFIG ####
-project_folder <- "/FULLDIR/chagastope_data"
+#Change this to FALSE when running the actual data
+testing <- TRUE
+
+#### READ ARGUMENTS AND GET PATH (YOU CAN CHANGE THE PATHS TO THE ABSOLUTE PATHS IF NECESSARY) ####
+args <- commandArgs(TRUE)
+
+if (length(args == 2)) {
+    if (args[1] == "-test") {
+        testing <- as.logical(args[2])
+    }
+}
+
+if (testing == TRUE) {
+    #For testing
+    project_folder <- "./test_data"
+    sd_multiplier_for_cutoff <- 1 #this is just because the SD of the test data is too large since it's mostly antigenic proteins
+} else {
+    #For running the actual data
+    project_folder <- "./chagastope_data"
+    sd_multiplier_for_cutoff <- 4
+}
 
 #### INTERNAL CONFIG (DO NOT CHANGE) ####
 library(data.table)
@@ -19,14 +41,13 @@ sequence_length <- 16
 sequence_overlap <- 12
 
 global_statistics_file <- sprintf("%s/outputs/01_pools_normalized_data/global_statistics.tsv", project_folder)
-sd_multiplier_for_cutoff <- 4
 global_statistics <- fread(global_statistics_file, header = T, sep = "\t", na.strings = NULL)
 cutoff <- global_statistics$mode + sd_multiplier_for_cutoff * global_statistics$sd
 
 min_amount_of_peptides_in_peak <- 2
 
-other_type_proportion_decimals <- 6 #this is overkill, but SEEEEEEE
-combined_mean_signal_decimals <- 6
+other_type_proportion_decimals <- 2
+combined_mean_signal_decimals <- 2
 
 output_file <- sprintf("%s/outputs/03_pools_antigenic_peaks/pools_peaks_cutoff4SD_2pep.tsv", project_folder)
 

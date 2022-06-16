@@ -1,10 +1,30 @@
 #### PREPARATION STEPS ####
+## You can run this code as it is to process a small subset of proteins, or you can follow these next steps to analyze the entire dataset.
+
 ## 1. Make sure you have run all previous codes
 ## 2. In chagastope_data/inputs/01_pools_array_design place the "Supplementary Table S09 - Mapping of CHAGASTOPE-v1 data to T cruzi proteins.tsv" file (links in the paper)
-## 3. Change the path in the config below so it points to chagastope_data folder
+## 3. Set the "testing" variable in the config below to FALSE, or run this code with the "-test F" argument
 
 #### CONFIG ####
-project_folder <- "/FULLDIR/chagastope_data"
+#Change this to FALSE when running the actual data
+testing <- TRUE
+
+#### READ ARGUMENTS AND GET PATH (YOU CAN CHANGE THE PATHS TO THE ABSOLUTE PATHS IF NECESSARY) ####
+args <- commandArgs(TRUE)
+
+if (length(args == 2)) {
+    if (args[1] == "-test") {
+        testing <- as.logical(args[2])
+    }
+}
+
+if (testing == TRUE) {
+    #For testing
+    project_folder <- "./test_data"    
+} else {
+    #For running the actual data
+    project_folder <- "./chagastope_data"
+}
 
 #### INTERNAL CONFIG (DO NOT CHANGE) ####
 library(data.table)
