@@ -42,7 +42,7 @@ for example
 ```
 $ Rscript 01_pools_normalize_data.R -test F
 ```
-or you can edit the codes and set:
+or you can edit each of the codes and set:
 ```
 testing <- FALSE
 ```
