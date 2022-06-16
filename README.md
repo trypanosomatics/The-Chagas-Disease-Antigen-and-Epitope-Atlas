@@ -15,7 +15,7 @@ To run the R code you will need the following packages: **data.table**, **prepro
 Prefixes in the files and folders in this repository are there simply to indicate grouping and order.
 
 ### Testing the code
-By defauly the code will use a test data set present in **test_data** and included in this repository.
+By default this code will use a test data set present in **test_data** and included in this repository.
 
 The antigenicity analysis example for a subset of 20 proteins can be performed by running in UNIX:
 ```
@@ -31,3 +31,16 @@ Alanine Scan example for **Ag2-antigen | TcCLB.511671.60** can be reproduced as 
 ```
 $ Rscript 21_alanine_scan_analisis.R
 ```
+
+You can also run the code directly from Rstudio, in which case you want to set either the working directory (*setwd* function) or change the *main_folder* variable found in the CONFIG section in each of the codes to point towards the folder where you placed this repository.
+
+### Running the code for the entire dataset
+To run the entire dataset you need to download all the data mentioned aboved and place it in the proper location. Afterwards you can either run each of the codes adding the following argument at the end:
+```
+-test F
+```
+or you can edit the codes and set:
+```
+testing <- FALSE
+```
+Also remember to change either the working directory or the *main_folder* variable if you are running this code directly from Rstudio.
