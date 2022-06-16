@@ -31,7 +31,7 @@ Alanine Scan example for **Ag2-antigen | TcCLB.511671.60** can be reproduced as 
 ```
 $ Rscript 21_alanine_scan_analisis.R
 ```
-You can also run the code directly from Rstudio, in which case you want to set either the working directory (*setwd* function) or change the *main_folder* variable found in the CONFIG section in each of the codes to point towards the folder where you placed this repository.
+You can also run the code directly from Rstudio, in which case you want to set either the working directory (*setwd* function) or change the *main_folder* variable found in the CONFIG section in each of the codes to point towards the main folder of this repository (the folder containing all the codes).
 
 ## Running the code for the entire dataset
 To run the entire dataset you need to download all the data mentioned aboved and place it in the proper location. Afterwards you can either run each of the codes adding the following argument at the end:
