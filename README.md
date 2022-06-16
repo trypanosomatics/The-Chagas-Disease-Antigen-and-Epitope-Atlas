@@ -38,6 +38,10 @@ To run the entire dataset you will need to download all the data mentioned above
 ```
 -test F
 ```
+for example
+```
+$ Rscript 01_pools_normalize_data.R -test F
+```
 or you can edit the codes and set:
 ```
 testing <- FALSE
