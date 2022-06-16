@@ -44,6 +44,7 @@ $ Rscript 01_pools_normalize_data.R -test F
 ```
 or you can edit each of the codes and set:
 ```
+#### CONFIG ####
 testing <- FALSE
 ```
 Also remember to change either the working directory or the *main_folder* variable if you are running this code directly from Rstudio.
