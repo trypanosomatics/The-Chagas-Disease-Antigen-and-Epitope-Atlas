@@ -18,7 +18,7 @@ By default this code will use the test datasets present in the **test_data** dir
 
 Prefixes in the filenames and folder names in the repository are there simply to indicate grouping and order.
 
-The antigenicity analysis example for a subset of 20 proteins can be performed by running in UNIX:
+The antigenicity analysis example for a subset of 20 proteins can be performed by running in UNIX into the main folder of this repository (the folder containing all the ```.R``` scripts):
 ```
 $ Rscript 01_pools_normalize_data.R
 $ Rscript 02_pools_smooth_data.R
@@ -33,7 +33,7 @@ And the analysis of single-residue mutagenesis data (aka AlanineScan) in the tes
 $ Rscript 21_alanine_scan_analisis.R
 ```
 
-If you'd like to run the code from within Rstudio, you may want to set either the working directory (*setwd* function) or change the *main_folder* variable found in the CONFIG section in each of the script files to point towards the main folder of this repository (the folder containing all the ```.R``` scripts).
+If you'd like to run the code from within Rstudio, you may want to set either the working directory (*setwd* function) or change the *main_folder* variable found in the CONFIG section in each of the script files to point towards the main folder of this repository.
 
 ## Analyzing Peptide Microarray Data from the Atlas
 
