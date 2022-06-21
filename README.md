@@ -16,7 +16,7 @@ The code is written in the R programming language, and depends on the following 
 
 By default this code will use the test datasets present in the **test_data** directory included in this repository.
 
-Prefixes in the filenames and folder names in the repository are there simply to indicate grouping and order.
+Prefixes in the filenames and folder names in the repository are there simply to indicate grouping and order of execution.
 
 The antigenicity analysis example for a subset of 20 proteins can be performed by running in UNIX into the main folder of this repository (the folder containing all the ```.R``` scripts):
 ```
