@@ -39,3 +39,5 @@ vignettes/*.pdf
 .Renviron
 .gitignore
 example/tempALASCAN/*
+test_data/outputs/*
+chagastope_data/*

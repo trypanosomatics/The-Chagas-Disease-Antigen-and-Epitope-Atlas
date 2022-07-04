@@ -143,13 +143,18 @@ for (i in 1:length(files)) {
   Chips_roche_norm <- rbind(Chips_roche_norm,Chips_roche_norm_dat)
 } #Load all micro-array results for all samples
 
-protein_to_estimate <- "TcCLB.511671.60" #Select protein to analyze, if this script is run as it is, it will only take this protein.
-dt <- estimateSignalChanges(protein_to_estimate)
-matrix <- generateHeatmapMatrix(dt)
 
-#### SAVE RESULTS ####
-write.table(dt,paste0(project_folder, "/outputs/21_alanine_scan_raw_data/Raw_data_signal_change_alanine_scan_", protein_to_estimate,".tsv"),sep = "\t")  #long format
-write.table(matrix,paste0(project_folder, "/outputs/21_alanine_scan_raw_data/Raw_data_signal_change_matrix_alanine_scan_", protein_to_estimate,".tsv"),sep = "\t") #matrix for heatmap
+for (protein_to_estimate in unique(design_alanine$protein)) {
+  dt <- estimateSignalChanges(protein_to_estimate)
+  matrix <- generateHeatmapMatrix(dt)  
+  #### SAVE RESULTS ####
+  write.table(dt,paste0(project_folder, "/outputs/21_alanine_scan_raw_data/Raw_data_signal_change_alanine_scan_", protein_to_estimate,".tsv"),sep = "\t")  #long format
+  write.table(matrix,paste0(project_folder, "/outputs/21_alanine_scan_raw_data/Raw_data_signal_change_matrix_alanine_scan_", protein_to_estimate,".tsv"),sep = "\t") #matrix for heatmap
+  
+  # OPTIONAL: using "pheatmap" and "colorblindr" package you could visualize results as in the manuscript.
+  pdf(file = paste0(project_folder, "/outputs/21_alanine_scan_raw_data/Heatmap_alanine_scan_", protein_to_estimate,".pdf"),height = 12, width = 12)
+  print(make_heatmap(temp_matrix = matrix,selected_protein = protein_to_estimate))
+  dev.off()
+}
 
-# OPTIONAL: using "pheatmap" and "colorblindr" package you could visualize results as in the manuscript.
-# make_heatmap(temp_matrix = matrix,selected_protein = protein_to_estimate) 
+
