@@ -152,9 +152,9 @@ for (protein_to_estimate in unique(design_alanine$protein)) {
   write.table(matrix,paste0(project_folder, "/outputs/21_alanine_scan_raw_data/Raw_data_signal_change_matrix_alanine_scan_", protein_to_estimate,".tsv"),sep = "\t") #matrix for heatmap
   
   # OPTIONAL: using "pheatmap" and "colorblindr" package you could visualize results as in the manuscript.
-  pdf(file = paste0(project_folder, "/outputs/21_alanine_scan_raw_data/Heatmap_alanine_scan_", protein_to_estimate,".pdf"),height = 12, width = 12)
-  print(make_heatmap(temp_matrix = matrix,selected_protein = protein_to_estimate))
-  dev.off()
+  # pdf(file = paste0(project_folder, "/outputs/21_alanine_scan_raw_data/Heatmap_alanine_scan_", protein_to_estimate,".pdf"),height = 12, width = 12)
+  # print(make_heatmap(temp_matrix = matrix,selected_protein = protein_to_estimate))
+  # dev.off()
 }
 
 
