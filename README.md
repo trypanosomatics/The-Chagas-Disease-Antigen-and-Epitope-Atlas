@@ -3,9 +3,7 @@
 
 This is the web and electronic complement to the paper *"A Trypanosoma cruzi Antigen and Epitope Atlas: deep characterization of individual antibody specificities in human Chagas Disease patients across the Americas."*
 
-The code demonstrates the processing and analysis of peptide microarray data as done for the Atlas. We make the code available so you can reproduce the results and play with the data. 
-
-**BUT Remember** all the outputs from running this pipeline are already available: Normalized Data is available at the EMBL-EBI Array Express database, and the Smoothed Data and Region Data are available as Supplementary Tables and Files in the paper.
+The code demonstrates the processing and analysis of peptide microarray data as done for the Atlas. We make the code available so you can reproduce the results and play with the data. **Do notice** that all the outputs from running this pipeline are already available: Normalized Data is available at the EMBL-EBI Array Express database, and the Smoothed Data and Region Data are available as Supplementary Tables and Files in the paper.
 
 
 ## Dependencies
