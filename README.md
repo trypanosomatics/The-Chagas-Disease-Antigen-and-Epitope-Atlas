@@ -55,3 +55,10 @@ testing <- FALSE
 ```
 
 Also remember to change either the working directory or the *main_folder* variable if you are running this code directly from Rstudio.
+
+## Please Cite
+
+A Trypanosoma cruzi Antigen and Epitope Atlas: deep characterization of antibody specificities in Chagas Disease patients across the Americas
+Alejandro D. Ricci, Leonel Bracco, Janine M. Ramsey, Melissa S. Nolan, M. Katie Lynn, Jaime Altcheh, Griselda Ballering, Faustino Torrico, Norival Kesper, Juan C. Villar, Jorge D. Marco, Fernán Agüero. bioRxiv 2022.08.19.504544; [doi:10.1101/2022.08.19.504544](https://doi.org/10.1101/2022.08.19.504544) 
+
+(This article is a preprint and has not been certified by peer review). 
