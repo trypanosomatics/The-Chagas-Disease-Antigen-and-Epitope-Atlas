@@ -1,3 +1,1 @@
-# TEST
-
-lala
+This code is exclusive for the paper **Deep serological profiling of the Trypanosoma cruzi TSSA antigen reveals different epitopes and modes of recognition by Chagas disease patients** by Romer et al.
