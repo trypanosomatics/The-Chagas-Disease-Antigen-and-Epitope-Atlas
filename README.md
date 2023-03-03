@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/503401137.svg)](https://zenodo.org/badge/latestdoi/503401137)
+
 # The Chagas Disease Antigen and Epitope Atlas
 <img src="https://chagastope.org/images/home/chagastope-logo-letters-only-v3.png" width="550px" alt="Chagastope Logo">
 
