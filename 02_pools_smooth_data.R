@@ -2,7 +2,7 @@
 ## You can run this code as it is to process a small subset of proteins, or you can follow these next steps to analyze the entire dataset.
 
 ## 1. Make sure you have run all previous codes
-## 2. In chagastope_data/inputs/01_pools_array_design place the "Supplementary Table S09 - Mapping of CHAGASTOPE-v1 data to T cruzi proteins.tsv" file (links in the paper)
+## 2. In chagastope_data/inputs/01_pools_array_design place the "Supplementary File S08 - Mapping of CHAGASTOPE-v1 data to T cruzi proteins.tsv" file (links in the paper)
 ## 3. Set the "testing" variable in the config below to FALSE, or run this code with the "-test F" argument
 ## 4. If you are running this code in Rstudio, set the "main_folder" variable in the config below to the folder containing this code
 
@@ -31,7 +31,7 @@ if (testing == TRUE) {
 library(data.table)
 library(zoo) #rollmean rollmedian
 
-design_data_file <- sprintf("%s/inputs/01_pools_array_design/Supplementary Table S09 - Mapping of CHAGASTOPE-v1 data to T cruzi proteins.tsv", project_folder)
+design_data_file <- sprintf("%s/inputs/01_pools_array_design/Supplementary File S08 - Mapping of CHAGASTOPE-v1 data to T cruzi proteins.tsv", project_folder)
 design_groups <- c("Trypanosoma_cruzi")
 
 normalized_data_folder <- sprintf("%s/outputs/01_pools_normalized_data", project_folder)

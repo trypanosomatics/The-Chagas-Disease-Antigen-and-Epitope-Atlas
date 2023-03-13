@@ -42,8 +42,8 @@ To analyze the entire dataset you will need the following:
 * The files included in this repository
 * The raw data files from CHAGASTOPE-v1 arrays (such as *AR_PO_raw.tsv*) downloaded from Array Express [here](https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-11651/). Place them in **chagastope_data/inputs/02_pools_raw_data**. 
 * Raw data files from CHAGASTOPE-v2 arrays (such as *AR_E1_PO_raw.tsv*) downloaded from Array Express [here](https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-11655/). Place them in **chagastope_data/inputs/12_individual_serums_raw_data**.
-* The mapping file for CHAGASTOPE-v1 arrays (*Supplementary Table S09 - Mapping of CHAGASTOPE-v1 data to T cruzi proteins.tsv*), available in our paper. Place it in **chagastope_data/inputs/01_pools_array_design**.
-* The mapping file for CHAGASTOPE-v2 arrays (*Supplementary Table S10 - Mapping of CHAGASTOPE-v2 data to T cruzi proteins.tsv*), available in our paper. Place it in **chagastope_data/inputs/11_individual_serums_array_design**.
+* The mapping file for CHAGASTOPE-v1 arrays (*Supplementary File S08 - Mapping of CHAGASTOPE-v1 data to T cruzi proteins.tsv*), available in our paper. Place it in **chagastope_data/inputs/01_pools_array_design**.
+* The mapping file for CHAGASTOPE-v2 arrays (*Supplementary File S09 - Mapping of CHAGASTOPE-v2 data to T cruzi proteins.tsv*), available in our paper. Place it in **chagastope_data/inputs/11_individual_serums_array_design**.
 
 Download all data, place it in the proper location and run each script, adding ``` -test F``` at the end, for example:
 ```
