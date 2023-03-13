@@ -92,9 +92,10 @@ generateHeatmapMatrix = function(dt){
   return(temp_matrix)
 }
 ## This functions takes the matrix generated, clusterize samples by similarity and renders a heatmap visualization with the same color scales used in the manuscript. Only used for ploting, not needed elsewhere.
+palette_OkabeIto <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "#999999")
 make_heatmap = function(temp_matrix,selected_protein,selected_serums = "") {
   colours_options <- c("red","blue","orange","green","white","pink","darkblue","grey")
-  colours_cb <- data.frame(names = colours_options,cb = c(colorblindr::palette_OkabeIto[c(6,2,1,3)],"white",colorblindr::palette_OkabeIto[c(7,5,8)]))
+  colours_cb <- data.frame(names = colours_options,cb = c(palette_OkabeIto[c(6,2,1,3)],"white",palette_OkabeIto[c(7,5,8)]))
   temp_matrix <- temp_matrix[,as.numeric(as.character(lapply(strsplit(colnames(temp_matrix)," "), `[[`, 1))) > 0]
   paletteLength <- 250
   myColor <- c(colorRampPalette(c(colours_cb$cb[colours_cb$names == "red"], "white"))(paletteLength/2),colorRampPalette(c("white",colours_cb$cb[colours_cb$names == "blue"]))(paletteLength/2))
@@ -151,7 +152,7 @@ for (protein_to_estimate in unique(design_alanine$protein)) {
   write.table(dt,paste0(project_folder, "/outputs/21_alanine_scan_raw_data/Raw_data_signal_change_alanine_scan_", protein_to_estimate,".tsv"),sep = "\t")  #long format
   write.table(matrix,paste0(project_folder, "/outputs/21_alanine_scan_raw_data/Raw_data_signal_change_matrix_alanine_scan_", protein_to_estimate,".tsv"),sep = "\t") #matrix for heatmap
   
-  # OPTIONAL: using "pheatmap" and "colorblindr" package you could visualize results as in the manuscript.
+  # OPTIONAL: using "pheatmap" package you could visualize results as in the manuscript.
   # pdf(file = paste0(project_folder, "/outputs/21_alanine_scan_raw_data/Heatmap_alanine_scan_", protein_to_estimate,".pdf"),height = 12, width = 12)
   # print(make_heatmap(temp_matrix = matrix,selected_protein = protein_to_estimate))
   # dev.off()
