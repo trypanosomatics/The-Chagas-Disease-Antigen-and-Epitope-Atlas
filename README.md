@@ -1,6 +1,6 @@
 [![DOI](https://zenodo.org/badge/503401137.svg)](https://zenodo.org/badge/latestdoi/503401137)
 
-# The Chagas Disease Antigen and Epitope Atlas
+# Code for The Chagas Disease Antigen and Epitope Atlas
 <img src="https://chagastope.org/images/home/chagastope-logo-letters-only-v3.png" width="550px" alt="Chagastope Logo">
 
 This is the web and electronic complement to the paper *"A Trypanosoma cruzi Antigen and Epitope Atlas: deep characterization of individual antibody specificities in human Chagas Disease patients across the Americas."*
