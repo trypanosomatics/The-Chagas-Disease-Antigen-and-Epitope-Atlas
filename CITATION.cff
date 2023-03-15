@@ -1,14 +1,14 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 authors:
-- family-names: "Alejandro"
-  given-names: "Ricci"
+- family-names: "Ricci"
+  given-names: "Alejandro"
   orcid: "https://orcid.org/0000-0002-1814-0568"
-- family-names: "Leonel"
-  given-names: "Bracco"
+- family-names: "Bracco"
+  given-names: "Leonel"
   orcid: "https://orcid.org/0000-0003-0966-2994"
-- family-names: "Fernán"
-  given-names: "Agüero"
+- family-names: "Agüero"
+  given-names: "Fernán"
   orcid: "https://orcid.org/0000-0003-1331-5741"
 title: "Code for The Chagas Disease Antigen and Epitope Atlas"
 version: 1.0.1
