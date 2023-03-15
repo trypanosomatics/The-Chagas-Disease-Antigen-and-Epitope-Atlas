@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Alejandro"
+  given-names: "Ricci"
+  orcid: "https://orcid.org/0000-0002-1814-0568"
+- family-names: "Leonel"
+  given-names: "Bracco"
+  orcid: "https://orcid.org/0000-0003-0966-2994"
+- family-names: "Fernán"
+  given-names: "Agüero"
+  orcid: "https://orcid.org/0000-0003-1331-5741"
+title: "Code for The Chagas Disease Antigen and Epitope Atlas"
+version: 1.0.1
+doi: 10.5281/zenodo.7696856
+date-released: 2023-03-15
+url: "https://github.com/trypanosomatics/The-Chagas-Disease-Antigen-and-Epitope-Atlas"
