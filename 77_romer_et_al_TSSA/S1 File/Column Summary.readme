@@ -1,0 +1,21 @@
+This is a summary of the columns found in the different files containing the design information and fluorescence signals.
+
+protein = Locus identifier.
+source = Identifier for the origin of the serum. Pools are named with two letters from the corresponding country (AR = Argentina; BO = Bolivia; BR = Brazil; CO = Colombia; MX = Mexico; US = United States). Individual samples have a prefix indicating their country and a suffix indicating if they were part of the corresponding pool (P) or not (E).
+type = Tag indicating if the serum is positive (PO), meaning from individuals with the disease (Chagas), or negative (NE), meaning from healthy individuals.
+start = Position of the first aa of the peptide in the protein (the first aa in the protein has the position 1).
+sequence = Sequence of the peptide in the design. It's not always the assayed sequence (see "truncated").
+truncated = Number of aa trimmed from the end of the sequence due to limitations in the assay method.
+replica_1_raw_signal = Fluorescence signal without any processing for the first replica of the experiment.
+replica_2_raw_signal = Fluorescence signal without any processing for the second replica of the experiment.
+mean_raw_signal = Average of the two replicas for the raw signal.
+sd_raw_signal = Standard deviation of the two replicas for the raw signal.
+replica_1_normalized_signal, replica_2_normalized_signal, mean_normalized_signal and sd_normalized_signal are the same as their raw counterparts, but after performing a quantile normalization between all samples in that design (pools with pools, individual serums with individual serums).
+
+The following columns are present in only some of the files:
+
+end = Position of the last aa of the peptide in the protein.
+sequence_length = Amount of aa in the sequence.
+polymorphic_positions = Amino acids corresponding to the polymorphic positions of TSSA II (31, 38 (solely the T-to-K permutation), 39, 40, 42, 44, 46, 47, 50 and 51).
+base_sequence = Sequence of the peptide before replacing one amino acid with Alanine in the Alanine Scan.
+alanine_position = Position in the sequence of the amino acid to replace with Alanine in the Alanine Scan (or with Guanine if said amino acid already is an Alanine).
