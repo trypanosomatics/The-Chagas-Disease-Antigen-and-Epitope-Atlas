@@ -118,8 +118,8 @@ colnames(full_normalized_data) <- gsub("rawData", "normalizedData", colnames(ful
 #### CALCULATE GLOBAL STATISTICS ####
 cols_to_select <- setdiff(colnames(full_normalized_data), "Reporter Name")
 if (length(sources_to_exclude_from_global_statistics) > 0) {
-    for (item_for in sources_to_exclude_from_global_statistics) {
-        item_for <- sources_to_exclude_from_global_statistics[1]
+    for (source_for in sources_to_exclude_from_global_statistics) {
+        # source_for <- sources_to_exclude_from_global_statistics[1]
         cols_to_select <- cols_to_select[!grepl(sprintf("%s_", source_for), cols_to_select)]
     }
 }
